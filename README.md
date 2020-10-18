@@ -3,4 +3,5 @@
 In Proceeding of 2020 Conference on Neural Information Processing Systems (NeurIPS 2020), oral presentation.
 
 **Feng Liu,   Xiaoming Liu**
+
 Department of Computer Science and Engineering, Michigan State University
