@@ -70,22 +70,6 @@ class InverseImplicitFun(nn.Module):
         self.fc7 = nn.Linear(512, 512)
         self.fc8 = nn.Linear(512, 3)
 
-        nn.init.xavier_uniform_(self.fc1.weight)
-        nn.init.constant_(self.fc1.bias,0)
-        nn.init.xavier_uniform_(self.fc2.weight)
-        nn.init.constant_(self.fc2.bias,0)
-        nn.init.xavier_uniform_(self.fc3.weight)
-        nn.init.constant_(self.fc3.bias,0)
-        nn.init.xavier_uniform_(self.fc4.weight)
-        nn.init.constant_(self.fc4.bias,0)
-        nn.init.xavier_uniform_(self.fc5.weight)
-        nn.init.constant_(self.fc5.bias,0)
-        nn.init.xavier_uniform_(self.fc6.weight)
-        nn.init.constant_(self.fc6.bias,0)    
-        nn.init.xavier_uniform_(self.fc7.weight)
-        nn.init.constant_(self.fc7.bias,0)  
-        nn.init.xavier_uniform_(self.fc8.weight)
-        nn.init.constant_(self.fc8.bias,0)   
 
     def forward(self, z, values):
 
