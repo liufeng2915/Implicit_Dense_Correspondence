@@ -1,6 +1,6 @@
 
 # Learning Implicit Functions for Topology-Varying Dense 3D Shape Correspondence
-In Proceeding of 2020 Conference on Neural Information Processing Systems (NeurIPS 2020). **Oral presentation**.
+In Proceeding of 2020 Conference on Neural Information Processing Systems (NeurIPS 2020). **Oral presentation**. [[Arxiv](https://arxiv.org/abs/2010.12320), [Project](http://cvlab.cse.msu.edu/)]
 
 **Feng Liu,   Xiaoming Liu**
 
