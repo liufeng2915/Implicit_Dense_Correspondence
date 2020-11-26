@@ -1,11 +1,11 @@
 
 
-%clear; close all;
+clear; close all;
 path = 'data/';
 cate_id = {'plane', 'bike', 'chair', 'helicopter'};
 cate_name = {'Plane', 'Bike', 'Chair', 'Helicopter'};
 
-for ic = 4:length(cate_id)
+for ic = 1:length(cate_id)
 
     %%
     % AtlasNet2
