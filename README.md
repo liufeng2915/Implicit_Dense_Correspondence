@@ -5,3 +5,8 @@ In Proceeding of 2020 Conference on Neural Information Processing Systems (NeurI
 **Feng Liu,   Xiaoming Liu**
 
 Department of Computer Science and Engineering, Michigan State University
+
+*The goal of this paper is to learn dense 3D shape correspondence for topology-varying objects in an unsupervised manner.* 
+
+
+
