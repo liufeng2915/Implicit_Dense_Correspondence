@@ -10,4 +10,7 @@ Department of Computer Science and Engineering, Michigan State University
 
 ![teaser](img/teaser.png)
 
-Figure 1: Given a shape $S$, PointNet *E* is used to extract the shape feature code **z**. Then a part embedding **o** is produced via a deep implicit function *f*. We implement dense correspondence through an inverse  function mapping from **o** to recover the 3D shape. (b) To further make the learned part embedding consistent across all the shapes, we randomly select two shapes **S**<sub>A</sub> and **S**<sub>B</sub>. By swapping the part embedding vectors, a cross reconstruction loss is used to enforce the inverse function to recover to each other.
+<font size=2.5> Figure 1: Given a shape $S$, PointNet *E* is used to extract the shape feature code **z**. Then a part embedding **o** is produced via a deep implicit function *f*. We implement dense correspondence through an inverse  function mapping from **o** to recover the 3D shape. (b) To further make the learned part embedding consistent across all the shapes, we randomly select two shapes **S**<sub>A</sub> and **S**<sub>B</sub>. By swapping the part embedding vectors, a cross reconstruction loss is used to enforce the inverse function to recover to each other. </font>
+$$
+\alpha
+$$
