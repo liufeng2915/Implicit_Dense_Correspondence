@@ -18,19 +18,20 @@ class Encoder(nn.Module):
         self.relu = nn.ReLU(inplace=True)
                 
     def forward(self, x):
-        B, D, N = x.size()
+        # x:  B*num_points*3
+
         x = x.transpose(2,1).contiguous()
         x = self.relu(self.conv1(x))
         x = self.relu(self.conv2(x))
         x = self.relu(self.conv3(x))
         x = self.relu(self.conv4(x))
-        x1 = self.conv5(x)
-        x2 = torch.max(x1, 2, keepdim=True)[0]
-        x2 = x2.view(-1, 1024)
-        x2 = self.relu(self.fc1(x2))
-        x3 = self.fc2(x2)
+        x = self.conv5(x)
+        x = F.max_pool1d(x, x.shape[2])
+        x = x.view(-1, 1024)
+        x = self.relu(self.fc1(x))
+        x = self.fc2(x)
 
-        return x3
+        return x
 
 
 class ImplicitFun(nn.Module):
@@ -48,8 +49,8 @@ class ImplicitFun(nn.Module):
         z = z.unsqueeze(1).repeat(1, num_pts, 1)
         pointz = torch.cat((points, z), dim=2)
 
-        x1 = F.leaky_relu(self.sd_fc1(pointz), 0.02, inplace=True)
-        x2 = F.leaky_relu(self.sd_fc2(x1), 0.02, inplace=True)
+        x1 = F.leaky_relu(self.sd_fc1(pointz), 0.02)
+        x2 = F.leaky_relu(self.sd_fc2(x1), 0.02)
         x3 = torch.sigmoid(self.sd_fc3(x2))
         x4 = F.max_pool1d(x3, x3.shape[2])
 
@@ -68,6 +69,23 @@ class InverseImplicitFun(nn.Module):
         self.fc6 = nn.Linear(512, 512)
         self.fc7 = nn.Linear(512, 512)
         self.fc8 = nn.Linear(512, 3)
+
+        nn.init.xavier_uniform_(self.fc1.weight)
+        nn.init.constant_(self.fc1.bias,0)
+        nn.init.xavier_uniform_(self.fc2.weight)
+        nn.init.constant_(self.fc2.bias,0)
+        nn.init.xavier_uniform_(self.fc3.weight)
+        nn.init.constant_(self.fc3.bias,0)
+        nn.init.xavier_uniform_(self.fc4.weight)
+        nn.init.constant_(self.fc4.bias,0)
+        nn.init.xavier_uniform_(self.fc5.weight)
+        nn.init.constant_(self.fc5.bias,0)
+        nn.init.xavier_uniform_(self.fc6.weight)
+        nn.init.constant_(self.fc6.bias,0)    
+        nn.init.xavier_uniform_(self.fc7.weight)
+        nn.init.constant_(self.fc7.bias,0)  
+        nn.init.xavier_uniform_(self.fc8.weight)
+        nn.init.constant_(self.fc8.bias,0)   
 
     def forward(self, z, values):
 
