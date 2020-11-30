@@ -8,7 +8,7 @@ from model import ImplicitFun, Encoder, InverseImplicitFun
 import torch
 from torch.autograd import Variable
 from torch.utils.data import DataLoader
-from dataset_BHCP import*
+from datasetBHCP import*
 import scipy.io
 import scipy.spatial
 
