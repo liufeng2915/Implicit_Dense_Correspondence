@@ -1,8 +1,8 @@
 ### Datasets
 
-- #### BHCP
+- #### ShapeNet Training Data
 
-- #### ShapeNet part
+- #### BHCP
 
 - #### Non-Existence Detection
 
