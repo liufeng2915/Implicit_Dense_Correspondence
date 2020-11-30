@@ -12,7 +12,7 @@
   Data structure:
      -- shape1:       8192*3
      -- shape2:       8192*3
-     -- Points:          10*4 (x,y,z,label)
+     -- Points:       10*4 (x,y,z,label)
     ```
 
   
