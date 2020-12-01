@@ -2,7 +2,7 @@ import torch
 import torch.nn.functional as F
 from torch import nn
 from torch.autograd import Variable
-
+import os
 
 class Encoder(nn.Module):
     def __init__(self, channel=3, z_dim=256):
@@ -95,3 +95,20 @@ class InverseImplicitFun(nn.Module):
         x8 = torch.tanh(x8)
 
         return x8
+
+def checkpoint(config, epoch, Encoder=None, ImplicitFun=None, InverseImplicitFun=None):
+    model_path = config.checkpoint_dir + '/' + config.cate_name + '/' + '/Corr-' + str(epoch) + '.pth'
+
+    if not os.path.exists(config.checkpoint_dir + '/' + config.cate_name):
+        os.makedirs(config.checkpoint_dir + '/' + config.cate_name)
+    if InverseImplicitFun==None:
+        torch.save({
+                    'Encoder_state_dict': Encoder.state_dict(),
+                    'ImplicitFun_state_dict': ImplicitFun.state_dict()
+                    }, model_path)
+    else:
+        torch.save({
+                    'Encoder_state_dict': Encoder.state_dict(),
+                    'ImplicitFun_state_dict': ImplicitFun.state_dict(),
+                    'InverseImplicitFun_state_dict': InverseImplicitFun.state_dict()
+                    }, model_path) 

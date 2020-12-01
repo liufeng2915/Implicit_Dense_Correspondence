@@ -10,7 +10,6 @@ class ShapeNet(object):
         self.data_reso = data_reso    
 
     def load_data(self, path):
-
         mat_file = scipy.io.loadmat(path)
         data = mat_file['data_'+str(self.data_reso)]
         points = data[:,:3]
@@ -29,7 +28,6 @@ class ShapeNet(object):
         return scale_points.astype(np.float32), values.astype(np.float32), scale_shape.astype(np.float32)
 
     def __getitem__(self, index):
-
         file_path = self.data_list[index]
         points, values, shape = self.load_data(file_path)
 
@@ -40,6 +38,5 @@ class ShapeNet(object):
 
 
 def generate_list(data_path):
-
-    data_list = sorted(glob.glob(path+'*.mat'))
+    data_list = sorted(glob.glob(data_path+'/*.mat'))
     return data_list
