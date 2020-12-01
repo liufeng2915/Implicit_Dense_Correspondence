@@ -2,6 +2,7 @@
 from torch.utils.data import DataLoader
 import scipy.io
 import numpy as np
+import glob
 
 class ShapeNet(object):
     def __init__(self, data_list, data_reso):
@@ -14,7 +15,7 @@ class ShapeNet(object):
         data = mat_file['data_'+str(self.data_reso)]
         points = data[:,:3]
         values = data[:,3:4]
-        shape = mat_file['points']
+        shape = mat_file['shape']
 
         # data aug.
         scale_rand = np.random.rand(1,3)+0.5
@@ -36,3 +37,9 @@ class ShapeNet(object):
 
     def __len__(self):
         return len(self.data_list)
+
+
+def generate_list(data_path):
+
+    data_list = sorted(glob.glob(path+'*.mat'))
+    return data_list
