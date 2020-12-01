@@ -40,3 +40,9 @@ CUDA_VISIBLE_DEVICES=0 python train_stage1.py --cate_name chair --epoch 100 --re
 CUDA_VISIBLE_DEVICES=0 python train_stage1.py --cate_name chair --epoch 150 --resolution 64 --batch_size  7 --pretrain_model TRUE --pretrain_model_name Corr-99.pth
 ```
 
+--------------------------------------
+
+**Contact**
+
+For questions feel free to post here or directly contact the author via liufeng6@msu.edu
+
