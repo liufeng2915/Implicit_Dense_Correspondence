@@ -96,11 +96,11 @@ class InverseImplicitFun(nn.Module):
 
         return x8
 
-def checkpoint(config, epoch, Encoder=None, ImplicitFun=None, InverseImplicitFun=None):
-    model_path = config.checkpoint_dir + '/' + config.cate_name + '/' + '/Corr-' + str(epoch) + '.pth'
+def checkpoint(config, epoch, stage= None, Encoder=None, ImplicitFun=None, InverseImplicitFun=None):
+    model_path = config.checkpoint_dir + '/' + config.cate_name + '/' + stage + '/' + 'Corr-' + str(epoch) + '.pth'
 
-    if not os.path.exists(config.checkpoint_dir + '/' + config.cate_name):
-        os.makedirs(config.checkpoint_dir + '/' + config.cate_name)
+    if not os.path.exists(config.checkpoint_dir + '/' + config.cate_name + '/' + stage + '/'):
+        os.makedirs(config.checkpoint_dir + '/' + config.cate_name + '/' + stage + '/')
     if InverseImplicitFun==None:
         torch.save({
                     'Encoder_state_dict': Encoder.state_dict(),

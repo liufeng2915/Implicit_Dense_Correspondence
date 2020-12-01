@@ -18,7 +18,7 @@ from loss import *
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--cate_name', type=str, default='chair', help='category name')
-parser.add_argument('--data_dir', type=str, default='./data/ShapeNet/', help='Root directory of dataset')
+parser.add_argument('--data_dir', type=str, default='./data/ShapeNet/', help='Root directory of dataset') 
 parser.add_argument('--resolution', type=int, default=64, help='voxel resolution')
 parser.add_argument('--epoch', type=int, default=1000, help='Epoch to train')
 parser.add_argument('--learning_rate', type=float, default=0.0001, help='Learning rate of for adam')
@@ -61,8 +61,8 @@ print(Encoder, ImplicitFun)
 # load pre-trained model
 counter = 0
 if config.pretrain_model:
-    counter = int(config.model_name.split('-')[-1][:-4])
-    all_model = torch.load(config.checkpoint_dir + '/' + config.cate_name + '/' + config.model_name)
+    counter = int(config.pretrain_model_name.split('-')[-1][:-4])
+    all_model = torch.load(config.checkpoint_dir + '/' + config.cate_name + '/stage1/' + config.pretrain_model_name)
     Encoder.load_state_dict(all_model['Encoder_state_dict'])
     ImplicitFun.load_state_dict(all_model['ImplicitFun_state_dict'])
     counter = counter + 1
@@ -110,4 +110,4 @@ if __name__ == '__main__':
                 print("Epoch: [%4d/%4d] Time: %4.1f, Loss: %.4f, loss_occupancy: %.4f "%(epoch, it, time.time()-start_time, show_loss/num_iter, loss_occ.item()))
 
         if (epoch+1)%10==0:
-            checkpoint(config, epoch, Encoder, ImplicitFun)
+            checkpoint(config, epoch, 'stage1', Encoder, ImplicitFun)
