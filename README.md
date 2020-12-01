@@ -16,8 +16,6 @@ Department of Computer Science and Engineering, Michigan State University
 
 This code is developed with Python3 and PyTorch 1.1
 
---------------------------------------
-
 **Dataset**
 
 Please refer to data/README
