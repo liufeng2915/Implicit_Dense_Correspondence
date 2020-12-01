@@ -14,4 +14,20 @@ Department of Computer Science and Engineering, Michigan State University
 
 --------------------------------------
 
-We implement our model in Pytorch. 
+This code is developed with Python3 and PyTorch 1.1
+
+--------------------------------------
+
+**Dataset**
+
+Please refer to data/README
+
+**Pretrained models**
+
+Please refer to models/README
+
+**Evaluation**
+
+Please refer to evaluation/README
+
+**Training**
