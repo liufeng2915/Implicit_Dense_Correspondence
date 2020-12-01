@@ -2,9 +2,13 @@
 
 - #### ShapeNet Training Data
 
+  To evaluate semantic correspondence, Following the setting of LMVCNN, we trained on ShapeNet and tested on BHCP. Please download the training data from: https://drive.google.com/file/d/1vUM3USFtBAGCSnDEoFqfZNokge0qZ9S_/view?usp=sharing (161.1MB)
+
+  For the segmentation experiment, Please refer to BAE-Net [project page](https://github.com/czq142857/BAE-NET).
+
 - #### BHCP
 
-  To evaluate semantic correspondence, Following the setting of LMVCNN, we trained on ShapeNet and test on BHCP.  We never used the training set of BHCP, only focus on the test set. 
+   We never used the training set of BHCP, only focused on the test set. Please follow Vladimir G. Kim's [project page](http://www.vovakim.com/projects/CorrsTmplt/doc_data.html) for the original BHCP dataset.
 
 - #### Non-Existence Detection
 
