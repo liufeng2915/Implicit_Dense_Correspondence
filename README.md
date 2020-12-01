@@ -30,7 +30,7 @@ Please refer to evaluation/README
 
 **Training**
 
-Our method is trained in three stages, please refer to the paper and supp. for more details.
+Our method is trained in three stages: 1) PointNet like encoder and implicit function are trained on sampled point-value pairs via occupancy loss. 2) encoder, implicit function and inverse implicit function are jointly trained via occupancy and self-reconstruction losses. 3) We jointly train encoder, implicit function and inverse implicit function with occupancy, self-reconstruction and cross-reconstruction losses.
 
 ```bash
 ## ----------------------  chair  ----------------------------- ##
