@@ -18,7 +18,7 @@ from loss import *
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--cate_name', type=str, default='chair', help='category name')
-parser.add_argument('--data_dir', type=str, default='/media/lf-fl/feng/experiments/2020/NIPS2020/data/semantic/data/release/', help='Root directory of dataset')
+parser.add_argument('--data_dir', type=str, default='./data/ShapeNet/', help='Root directory of dataset')
 parser.add_argument('--resolution', type=int, default=64, help='voxel resolution')
 parser.add_argument('--epoch', type=int, default=1000, help='Epoch to train')
 parser.add_argument('--learning_rate', type=float, default=0.0001, help='Learning rate of for adam')
