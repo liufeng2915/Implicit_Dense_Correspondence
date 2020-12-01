@@ -96,7 +96,7 @@ class InverseImplicitFun(nn.Module):
 
         return x8
 
-def checkpoint(config, epoch, stage= None, Encoder=None, ImplicitFun=None, InverseImplicitFun=None):
+def checkpoint(config, epoch, stage=None, Encoder=None, ImplicitFun=None, InverseImplicitFun=None):
     model_path = config.checkpoint_dir + '/' + config.cate_name + '/' + stage + '/' + 'Corr-' + str(epoch) + '.pth'
 
     if not os.path.exists(config.checkpoint_dir + '/' + config.cate_name + '/' + stage + '/'):

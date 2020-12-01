@@ -1,6 +1,6 @@
 
 # Learning Implicit Functions for Topology-Varying Dense 3D Shape Correspondence
-Advances in Neural Information Processing Systems (NeurIPS 2020). **Oral presentation**. [[Arxiv](https://arxiv.org/abs/2010.12320),[PDF](http://cvlab.cse.msu.edu/pdfs/Implicit_Dense_Correspondence.pdf), [Supp](http://cvlab.cse.msu.edu/pdfs/Implicit_Dense_Correspondence_Supp.pdf), [Project](http://cvlab.cse.msu.edu/project-implicit-dense-correspondence.html)]
+Advances in Neural Information Processing Systems (NeurIPS 2020). **Oral presentation**. [[Arxiv](https://arxiv.org/abs/2010.12320), [PDF](http://cvlab.cse.msu.edu/pdfs/Implicit_Dense_Correspondence.pdf), [Supp](http://cvlab.cse.msu.edu/pdfs/Implicit_Dense_Correspondence_Supp.pdf), [Project](http://cvlab.cse.msu.edu/project-implicit-dense-correspondence.html)]
 
 **[Feng Liu](http://cvlab.cse.msu.edu/pages/people.html),   [Xiaoming Liu](http://cvlab.cse.msu.edu/pages/people.html)**
 

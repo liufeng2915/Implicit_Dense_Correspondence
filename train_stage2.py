@@ -56,13 +56,14 @@ train_loader = DataLoader(train_data, num_workers=4, batch_size=config.batch_siz
 # # network
 Encoder = Encoder()
 ImplicitFun = ImplicitFun() 
-print(Encoder, ImplicitFun)
+InverseImplicitFun = InverseImplicitFun()
+print(Encoder, ImplicitFun, InverseImplicitFun)
 
 # load pre-trained model
 counter = 0
 if config.pretrain_model:
     counter = int(config.pretrain_model_name.split('-')[-1][:-4])
-    all_model = torch.load(config.checkpoint_dir + '/' + config.cate_name + '/stage1/' + config.pretrain_model_name)
+    all_model = torch.load(config.checkpoint_dir + '/' + config.cate_name + '/' + config.pretrain_model_name)
     Encoder.load_state_dict(all_model['Encoder_state_dict'])
     ImplicitFun.load_state_dict(all_model['ImplicitFun_state_dict'])
     counter = counter + 1
@@ -71,10 +72,11 @@ if config.pretrain_model:
 if config.cuda:
     Encoder = Encoder.cuda()
     ImplicitFun = ImplicitFun.cuda()
-    
+    InverseImplicitFun = InverseImplicitFun.cuda()
+
 
 # # optimizer
-optimizer = optim.Adam(list(Encoder.parameters())+list(ImplicitFun.parameters()), lr=config.learning_rate, betas=[config.beta1, 0.999])
+optimizer = optim.Adam(list(Encoder.parameters())+list(ImplicitFun.parameters())+list(InverseImplicitFun.parameters()), lr=config.learning_rate, betas=[config.beta1, 0.999])
 
 
 # ----------------------------------------------------------------------------------------------------------------------------------------------- #
@@ -97,17 +99,26 @@ if __name__ == '__main__':
             latent = Encoder(shape)
             _,esti_values = ImplicitFun(latent, points)
             loss_occ = occupancy_loss(esti_values, values)
-            loss_occ.backward()
+
+            branch_values,_ = ImplicitFun(latent, shape)
+            esti_shape = InverseImplicitFun(latent, branch_values)
+            loss_sr = selfrec_loss(esti_shape, shape)                # self-reconstruction loss
+
+            loss = loss_occ + loss_sr
+            loss.backward()
             optimizer.step()
 
-            show_loss = show_loss + loss_occ.item()
+            show_loss = show_loss + loss.item()
             num_iter = num_iter + 1
-            writer.add_scalar('loss/loss_occ', loss_occ, num_iter)
+            writer.add_scalar('loss/loss', loss, num_iter)
+            writer.add_scalar('loss/loss_occupancy', loss_occ, num_iter)
+            writer.add_scalar('loss/loss_self_reconstruction', loss_sr, num_iter)
             if (epoch%10)==0:
                 writer.add_histogram('embedding/z', latent, num_iter)
 
             if (it % 10) == 0:
-                print("Epoch: [%4d/%4d] Time: %4.1f, Loss: %.4f, loss_occupancy: %.4f "%(epoch, it, time.time()-start_time, show_loss/num_iter, loss_occ.item()))
+                print("Epoch: [%4d/%5d] Time: %4.1f, Loss: %.4f, loss_occupancy: %.4f, loss_self_reconstruction: %.4f"
+                    %(epoch, it, time.time()-start_time, show_loss/num_iter, loss_occ.item(), loss_sr.item()))
 
         if (epoch+1)%10==0:
-            checkpoint(config, epoch, 'stage1', Encoder, ImplicitFun)
+            checkpoint(config, epoch, 'stage2', Encoder, ImplicitFun, InverseImplicitFun)
