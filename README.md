@@ -41,6 +41,9 @@ CUDA_VISIBLE_DEVICES=0 python train_stage1.py --cate_name chair --epoch 300 --re
 
 # stage2
 CUDA_VISIBLE_DEVICES=0 python train_stage2.py --cate_name chair --epoch 500 --resolution 64 --batch_size  4 --pretrain_model TRUE --pretrain_model_name stage1/Corr-299.pth
+
+# stage3
+CUDA_VISIBLE_DEVICES=0 python train_stage3.py --cate_name chair --epoch 1000 --resolution 64 --batch_size  2 --pretrain_model TRUE --pretrain_model_name stage2/Corr-499.pth
 ```
 
 --------------------------------------
