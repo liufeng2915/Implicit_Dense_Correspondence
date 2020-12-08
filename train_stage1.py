@@ -43,7 +43,7 @@ if config.cuda:
     torch.backends.cudnn.benchmark = True
 print(config)
 
-sig =  config.signature
+sig = config.signature
 writer = SummaryWriter('%s/%s/%s' % (config.logs_dir, config.cate_name, sig))
 
 

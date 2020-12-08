@@ -98,11 +98,11 @@ if __name__ == '__main__':
             optimizer.zero_grad()
             latent = Encoder(shape)
             _,esti_values = ImplicitFun(latent, points)
-            loss_occ = occupancy_loss(esti_values, values)
+            loss_occ = occupancy_loss(esti_values, values)               # occupancy loss
 
             branch_values,_ = ImplicitFun(latent, shape)
-            esti_shape = InverseImplicitFun(latent, branch_values)
-            loss_sr = selfrec_loss(esti_shape, shape)                # self-reconstruction loss
+            self_rec_shape = InverseImplicitFun(latent, branch_values)
+            loss_sr = selfrec_loss(self_rec_shape, shape)                # self-reconstruction loss 
 
             loss = loss_occ + loss_sr
             loss.backward()
