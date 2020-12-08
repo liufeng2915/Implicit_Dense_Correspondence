@@ -4,7 +4,7 @@
 
   To evaluate semantic correspondence, Following the setting of LMVCNN, we trained on ShapeNet and tested on BHCP. Please download the training data from: https://drive.google.com/file/d/1vUM3USFtBAGCSnDEoFqfZNokge0qZ9S_/view?usp=sharing (161.1MB)
 
-  For the ShapeNet part data in segmentation experiment, Please refer to BAE-Net [project page](https://github.com/czq142857/BAE-NET).
+  For the ShapeNet part data in segmentation experiment, Please refer to BAE-Net [project page](https://github.com/czq142857/BAE-NET) for the data and protocols.
 
 - #### BHCP
 
