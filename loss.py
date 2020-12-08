@@ -146,7 +146,7 @@ def CD_normal_loss(esti_shapes, shapes, esti_normals, normals):
     dist1, dist2, idx1, idx2 = nnd_dist(esti_shapes, shapes)
     loss_cd = torch.mean(torch.sqrt(dist1)) + torch.mean(torch.sqrt(dist2))
 
-    corr_normal = torch.gather(normals, 1, idx1.long().unsqueeze(-1).repeat(1,1,3))
+    corr_normals = torch.gather(normals, 1, idx1.long().unsqueeze(-1).repeat(1,1,3))
     loss_normal = cosine_loss(esti_normals, corr_normal)
     return loss_cd, loss_normal
 
