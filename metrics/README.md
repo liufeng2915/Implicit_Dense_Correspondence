@@ -6,5 +6,5 @@
 
   We used an EMD implementation from https://github.com/Colin97/MSN-Point-Cloud-Completion. 
 
-  Please refer to the original projects for more details.
+  Please refer to the original projects for more details about installation.
 
