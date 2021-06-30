@@ -8,7 +8,7 @@
 
 - #### BHCP
 
-   We never used the training set of BHCP, only focused on the test set. Please follow Vladimir G. Kim's [project page](http://www.vovakim.com/projects/CorrsTmplt/doc_data.html) for the original BHCP dataset.
+   We never used the training set of BHCP, only focused on the test set. Please follow Vladimir G. Kim's [project page](http://www.vovakim.com/projects/CorrsTmplt/doc_data.html) for the original BHCP dataset. The processed data could be downloaded in the link: https://drive.google.com/file/d/1_5yOwIy1V9meUdxKatG8gPwnutt2leOx/view?usp=sharing.
 
 - #### Non-Existence Detection
 
